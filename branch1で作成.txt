@@ -1,2 +1,3 @@
 brunch1で更新してみました。
 さらに編集をしてみる
+Github上でsuzuki-developerが編集しました
