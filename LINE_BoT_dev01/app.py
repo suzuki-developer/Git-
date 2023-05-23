@@ -1,5 +1,5 @@
 #######################################################################
-# config.pyの読み込み（チャンネルアクセストークンやチャンネルシークレット）
+# config.pyの読み込み（チャンネルアクセストークンとチャンネルシークレット）
 #######################################################################
 import config
 
@@ -36,10 +36,14 @@ handler = WebhookHandler(config.LINE_CHANNEL_SECRET)        # config.pyで設定
 ###################################################################################################
 # @app.routeデコレーターは、/callbackエンドポイントで受信したPOSTリクエストを処理するcallback関数を定義
 ###################################################################################################
-@app.rpute("/callback", methods=['POST'])                   # /callbackというエンドポイントにアプリケーションがバインドされる
+# デバッグ用
+@app.route("/")
+def hello_world():
+   return "hello world!"
+
+@app.route("/callback", methods=['POST'])                   # callback 関数のエンドポイントを /callback に設定し、POSTリクエストを受け取る
 def callback():
     # get X-Line-Signature header value
-
     signature = request.headers['X-Line-Signature']         # request.headersを使って、X-Line-Signatureヘッダーの値を取得（リクエストの署名を検証し、不正な場合はエラーメッセージを返し、要求を中止する）
 
     # get request body as text
@@ -64,6 +68,7 @@ def callback():
 # handler.add
 # 特定のイベントに対する処理を定義
 # MessageEventというイベントタイプが通知され、かつそのメッセージがTextMessageであるときに、handle_message関数が呼び出され、オウム返しのように同じメッセージが返信される
+# ユーザーが何らかのアクションをLINE Botに対して行い結果としてサーバーに情報が送信されることをイベントと呼ぶ
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -76,6 +81,9 @@ def handle_message(event):
         TextMessage(text=event.message.text) # 返信するメッセージの内容（event.message.textの部分は、LINEから受け取った値が格納されている）
     )
 
+#######################################################
+# アプリケーションをテストするためのローカルサーバーを開始
+#######################################################
 if __name__ == "__main__":
     app.run(host="localhost", port=8000)
 
