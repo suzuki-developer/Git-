@@ -55,15 +55,16 @@ def callback():
 # 第一引数は固定
 # 第二引数は返信するメッセージを指定
 
-# 今何時と聞くと現在時刻を答えてくれる
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    # 今何時と聞くと現在時刻を答えてくれる
     if event.message.text in ["今何時", "時間", "現在時刻"]:
         reply_message = datetime.datetime.now().strftime("%Y年%m月%d日 %H:%M:%Sです")
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_message)
         )
+    # 麦わらの一味の名前か役割、特徴を言うとセリフと画像が返される
     elif event.message.text in ["ルフィ", "海賊王", "ゴム人間", "船長", "麦わら"]:
         line_bot_api.reply_message(                  
             event.reply_token,
