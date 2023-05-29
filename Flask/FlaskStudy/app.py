@@ -1,4 +1,7 @@
-# 参考書籍 Python & Flask 初めてのWebアプリケーション作成に挑戦!!
+# --------------------------------------------------------
+# 参考書籍 
+# Python & Flask 初めてのWebアプリケーション作成に挑戦!!
+# --------------------------------------------------------
 
 # 必要なモジュールのインポート
 from flask import Flask, render_template, session, request, redirect, url_for
