@@ -1,0 +1,13 @@
+{
+  "version": "2.0",
+  "app_name": "line_bot",
+  "stages": {
+    "dev": {
+      "api_gateway_stage": "api",
+      "environment_variables": {
+        "LINE_CHANNEL_SECRET": "b242f830f4972b06a99a3051404c01ab",
+        "LINE_CHANNEL_ACCESS_TOKEN": "bWqwBcyhzXinYse2Q50DDH1lq8Yh7IxAGx8E8t6UagumsNN0UuoUZ4GnNGTFHv03iILWhX5InanVIqlPBtSUQlJeMEFLQJ3hpC4DYzRrSxMBbysY78JbsyOgsQSEFrX1Bbr/x4mK4kMHqaN48+8mIgdB04t89/1O/w1cDnyilFU="
+      }
+    }
+  }
+}
