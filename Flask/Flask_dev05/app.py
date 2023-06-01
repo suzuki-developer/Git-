@@ -4,6 +4,7 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 import os                               # 暗号鍵作成で使用
 from pref_question import pref_location # 県庁所在地当てクイズに関するファイル
+from wiki import wiki
 
 
 # ==================
@@ -126,7 +127,7 @@ def answercheck():
     # フォームで入力されたcity属性を取得
     user_answer = request.form['city']
 
-    # セッションから都道府県、都市名、URLを取得
+    # セッション変数から都道府県、都市名、URLを取得
     prefecture = session.get('prefecture')
     city = session.get('city')
     url = session.get('URL')
@@ -141,6 +142,31 @@ def answercheck():
 
     # result, prefecture, city, urlを、result.htmlに渡す
     return render_template('result.html', result=result, prefecture=prefecture, city=city, url=url)
+
+
+# -------------------
+# wikipediaで調べもの
+# -------------------
+@app.route('/wikipedia', methods=['POST'])
+def wikipedia():
+    # この時点ではユーザーから検索ワードを受け取っておらず、返す結果がないため第二引数は空の文字列
+    return render_template('wiki_result.html', result='初めてのアクセスです！')
+    # # 以下でも可
+    # return render_template('wiki_result.html')
+
+# -------------------
+# wikipediaの検索結果
+# -------------------
+@app.route('/wiki_answer', methods=['POST'])
+def wiki_answer():
+    word = request.form['word'] # ユーザー入力値の取得
+    if word == '':              # 入力値が空欄の場合の処理
+        result = '入力がないため、該当する結果がありませんでした。'
+    else:
+        result = wiki(word)     # wiki()の引数にワード指定して結果結果の概要を取得
+
+    return render_template('wiki_result.html', result=result) # 取得した検索結果の概要を渡す
+
 
 # =====================
 # アプリケーションの起動
