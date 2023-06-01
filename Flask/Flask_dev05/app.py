@@ -2,7 +2,8 @@
 # 必要なライブラリのインポート
 # ===========================
 from flask import Flask, render_template, session, request, redirect, url_for
-import os # 暗号鍵作成で使用
+import os                               # 暗号鍵作成で使用
+from pref_question import pref_location # 県庁所在地当てクイズに関するファイル
 
 
 # ==================
@@ -46,9 +47,9 @@ def index():
 def login():
     return render_template('login.html')
 
-# ------------
-# ログイン認証
-# ------------
+# ----------------------------
+# ログイン認証（セッション管理）
+# ----------------------------
 @app.route('/logincheck', methods=['POST'])
 def logincheck():
     # フォームで入力されたユーザーIDとパスワードを変数に格納
@@ -79,6 +80,67 @@ def logincheck():
 def logout():
     session.pop('login', None)        # セッションを削除
     return redirect(url_for('index')) # def indexが走る
+
+# --------------------
+# 県庁所在地当てクイズ
+# --------------------
+@app.route("/pref_quiz", methods=['POST'])
+def pref_quiz():
+    # # pref_location()の戻り値を変数に代入
+    # random_pref, city_name, pref_url = pref_location()
+
+    # pref_location()の戻り値を取得
+    result = pref_location()
+    print("-----pref_location()の戻り値------")
+    print(result)
+
+    # 戻り値を変数に代入
+    random_pref = result[0]
+    city_name = result[1]
+    pref_url = result[2]
+    print("------戻り値を変数に代入------")
+    print(random_pref)
+    print(city_name)
+    print(pref_url)
+
+    # セッション変数に戻り値を保存
+    session['prefecture'] = random_pref
+    session['city'] = city_name
+    session['URL'] = pref_url
+    print("------セッション変数-------")
+    print(session['prefecture'])
+    print(session['city'])
+    print(session['URL'])
+
+    # quiz.htmlへ遷移
+    # random_prefをprefectureという変数に格納して、quiz.htmlに渡す
+    return render_template('quiz.html', prefecture=random_pref)
+
+
+
+# -------------------------------
+# クイズの答えが送信された際の処理
+# -------------------------------
+@app.route('/answercheck', methods=['POST'])
+def answercheck():
+    # フォームで入力されたcity属性を取得
+    user_answer = request.form['city']
+
+    # セッションから都道府県、都市名、URLを取得
+    prefecture = session.get('prefecture')
+    city = session.get('city')
+    url = session.get('URL')
+    print(prefecture)
+    print(city)
+    print(url)
+
+    if user_answer == city:
+        result = '正解'
+    else:
+        result = '残念'
+
+    # result, prefecture, city, urlを、result.htmlに渡す
+    return render_template('result.html', result=result, prefecture=prefecture, city=city, url=url)
 
 # =====================
 # アプリケーションの起動
