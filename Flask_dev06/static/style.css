@@ -26,3 +26,7 @@ table th {
 table td {
     border: solid 1px black;
 }
+
+.map {
+    width: 50vw;
+}

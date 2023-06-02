@@ -12,7 +12,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 import os                                 # 暗号鍵生成で使用
 from flask_sqlalchemy import SQLAlchemy   # ORMを使う為
 from datetime import datetime             # DBで日付を扱うのに必要
-
+from create_map import create_map
 
 # ==================
 # インスタンスの作成
@@ -87,6 +87,7 @@ def initialize_DB():              # initialize_DB()は、initialize_DBという�
     db.create_all()               # Tripクラスの記述を基にデータベース内にテーブルを作成することができる
     print('データベースの初期化が完了しました。')
 
+
 # ============
 # ルーティング
 # ============
@@ -143,6 +144,17 @@ def create():
     else:
         flash('作成できませんでした。入力内容を確認してください') # index.htmlに載せる
         return redirect(url_for('index'))
+
+# --------
+# 詳細画面
+# --------
+@app.route('/detail') # GETメソッドを使う場合は、引数に['GET']を省略して良い
+def detail():
+    title = 'Trip Log : 詳細画面'
+    id = request.args.get('id')                     # 送られてきたidを取得
+    data = Trip.query.get(id)                       # idを引数にして該当するデータをDBから取得（個別に取得する場合はquery.get()を使用）
+    map = create_map(data.latitude, data.longitude) # create_map関数に緯度経度を渡して地図を作成
+    return render_template('detail.html', title=title, data=data, map=map)
 
 
 # ===================
