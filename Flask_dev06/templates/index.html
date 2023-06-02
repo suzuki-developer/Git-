@@ -8,6 +8,42 @@
     <title>index</title>
 </head>
 <body>
-    <h1>{{title}}</h1>
+    <!-- 
+        flashメッセージ 
+        使用する場合はwithとセットで使用する
+        messages フラッシュメッセージのリストを格納
+        get_flashed_messages() 複数のフラッシュメッセージをリストとして返す
+    -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="background-color: lightblue;">
+                <b>{{ message }}</b></p>
+            {% endfor %}
+        {% endif %}          
+    {% endwith %}
+
+    <h1>{{ title }}</h1>
+
+    <!-- 
+        table              表全体
+        th    table header 表のタイトル（見出し）
+        tr    table row    表の枠組み
+        td    table data   セル
+        -->
+    <table>
+        <tr>
+            <th>タイトル</th>
+            <th>作成日</th>
+        </tr>
+        {% for i in all_data %}
+        <tr>
+            <td>{{ i.title }}</td>
+            <td>{{ i.create_date.date() }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p><a href="/new" class="button">新規作成</a></p>
 </body>
 </html>

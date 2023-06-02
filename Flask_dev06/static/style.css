@@ -2,3 +2,27 @@ body {
     padding: 20px;
     background-color: whitesmoke;
 }
+
+.button {
+    border-radius: 5px;
+    background-color: lightblue;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 300px;
+    text-align: center;
+    font-size: 14px;
+}
+table th {
+    background-color: black;
+    color: white;
+    border: solid 1px black;
+}
+table td {
+    border: solid 1px black;
+}
