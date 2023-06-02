@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>詳細画面</title>
 </head>
 <body>
-    
+    <h1>{{ title }}</h1>
+    <h2>【 {{ data.title }} 】</h2>
+    <p>{{ data.content }}</p>
+
+    <div class="map">
+        <!-- 
+            map変数をこのまま埋め込むと文字列として表示されてしまう為
+            | safe フィルタを使ってHTMLとして表示
+         -->
+        <p>{{ map | safe }}</p>
+    </div>
+
+    <p><a href="/">一覧画面に戻る</a></p>
 </body>
 </html>

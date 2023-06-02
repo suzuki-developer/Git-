@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
-    <title>index</title>
+    <title>一覧画面</title>
 </head>
 <body>
     <!-- 
@@ -38,7 +38,8 @@
         </tr>
         {% for i in all_data %}
         <tr>
-            <td>{{ i.title }}</td>
+            <!-- URLの後ろに?を付ける事で各idへ飛ぶようにする -->
+            <td><a href="/detail?id={{ i.id }}">{{ i.title }}</a></td>
             <td>{{ i.create_date.date() }}</td>
         </tr>
         {% endfor %}
