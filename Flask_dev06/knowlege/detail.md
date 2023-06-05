@@ -6,6 +6,7 @@
             <p>{{ map | safe }}</p>
     ```
 
+
 ## {{ title }}と{{ data.title }}の違い
 - titleはルーティング関数内で定義されたローカル変数
     - render_template関数に渡されるテンプレートに直接的に値を渡している

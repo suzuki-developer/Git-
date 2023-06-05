@@ -34,7 +34,7 @@ app.secret_key = key
 # DBの作成、設定
 URI = 'sqlite:///trip.db'                             
 app.config['SQLALCHEMY_DATABASE_URI'] = URI           
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 print('------辞書の中身を出力------')
 print(app.config)
 
@@ -107,7 +107,7 @@ def detail():
 # 編集画面
 # --------
 # パスは文字列の為、idを整数型に変換
-@app.route('edit/<int:id>', methods=['GET'])
+@app.route('/edit/<int:id>', methods=['GET'])
 def edit(id):
     title = 'Trip Log : 編集画面'
     data = Trip.query.get(id)
@@ -128,6 +128,13 @@ def create():
         latitude = request.form['latitude']
         longitude = request.form['longitude']
 
+        # フォームに入力されたname属性の確認
+        print('------フォームに入力されたname属性の確認------')
+        print(title)
+        print(content)
+        print(latitude)
+        print(longitude)
+
         # フォームから入力されたデータを Trip モデルのインスタンスに格納
         register_data = Trip(
             title = title,
@@ -147,13 +154,18 @@ def create():
         flash('作成できませんでした。入力内容を確認してください') 
         return redirect(url_for('index'))
 
-# ------------
-# DBの更新処理
-# ------------
+# ------------------
+# レコードの更新処理
+# ------------------
 @app.route('/update', methods=['POST'])
 def update():
+    # リクエストフォームから送信されてきたidを取得
     id = request.form['id']
+
+    # 送られてきたidのレコードを取得
     edit_data = Trip.query.get(id)
+
+    # フォームで入力された値に置き換える
     edit_data.title = request.form['title']
     edit_data.content = request.form['content']
     edit_data.latitude = request.form['latitude']
@@ -162,6 +174,10 @@ def update():
     # edit_dataの型を確認
     print('------edit_dataの型を確認------')
     print(type(edit_data))
+
+    # idを確認
+    print('------idの確認------')
+    print(id)
 
     # edit_dataの中身を確認
     print('------edit_dataの中身を確認------')
@@ -185,10 +201,26 @@ def update():
     # 編集したデータをDBに更新
     db.session.merge(edit_data)
 
-    # 更新
+    # 確定
     db.session.commit()
     flash('更新しました')
     return redirect(url_for('index')) 
+
+# ------------------
+# レコードの削除処理
+# ------------------
+@app.route('/delete/<int:id>', methods=['GET'])
+def delete(id):
+    # 送られてきたidのレコードを取得
+    delete_data = Trip.query.get(id)
+    
+    # 該当するidのレコードを削除
+    db.session.delete(delete_data)
+
+    # 確定
+    db.session.commit()
+    flash('削除しました')
+    return redirect(url_for('index'))
 
 
 # ===================
