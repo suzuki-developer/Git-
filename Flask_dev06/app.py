@@ -134,7 +134,7 @@ def create():
 def detail():
     title = 'Trip Log : 詳細画面'
     id = request.args.get('id') 
-    data = Trip.query.get(id)                    
+    data = Trip.query.get(id)                 
     map = create_map(data.latitude, data.longitude) 
     return render_template('detail.html', title=title, data=data, map=map)
 
