@@ -1,58 +1,11 @@
-## index.html
-### flashメッセージについて 
-- 使用する場合はwithとセットで使用する
-- messages フラッシュメッセージのリストを格納
-- get_flashed_messages() 複数のフラッシュメッセージをリストとして返す
-- 例
-```
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <p style="background-color: lightblue;">
-                <b>{{ message }}</b></p>
-            {% endfor %}
-        {% endif %}          
-    {% endwith %}
-```
-
-### 表について
-- table              表全体
-- th    table header 表のタイトル（見出し）
-- tr    table row    表の枠組み
-- td    table data   セル
-
-
-## new.html
-### セキュリティ対策について
-- target属性を_blankにすることでリンク先で別タブを展開する
-- rel属性のnoopener noreferrerを使ってリンク元の情報が送られないようにする
-- ※別タブでリンクページを展開したい場合に使う
-- 例
-```
-        <a href="https://www.google.co.jp/maps/"
-        target="_blank" rel="noopener noreferrer"
-        class="button">Google Maps</a>
-```
-
-
-## detail.html
-- map変数をこのまま埋め込むと文字列として表示されてしまう
-- | safe フィルタを使ってHTMLとして表示する
-- 例
-```
-        <p>{{ map | safe }}</p>
-```
-
-
-## app.py
-### Flaskではsessionを使う際、session情報を暗号化する為のsession_keyの設定が必要
+## Flaskではsessionを使う際、session情報を暗号化する為のsession_keyの設定が必要
 - 例
 ```
 key = os.urandom(10) # 10桁の乱数を生成
 app.secret_key = key # セッション情報の暗号化
 ```
 
-### app.configについて
+## app.configについて
 - Flaskの設定オブジェクトで、アプリの設定を行うことができる
 - 辞書形式であり、設定を格納することができる
 - app.config['KEY1'] = 'value1'
@@ -66,7 +19,7 @@ print('------辞書の中身を出力------')
 print(app.config)
 ```
 
-### データベースオブジェクトについて
+## データベースオブジェクトについて
 - SQLAlchemyオブジェクトは、データベースの操作やクエリの実行など、データベース関連の機能を提供している
 - dbという変数にSQLAlchemyオブジェクトを代入することで、アプリ内のどの部分でもdbを使用して
 - データベース操作を行うことができるようになる
@@ -78,7 +31,7 @@ print(app.config)
 db = SQLAlchemy(app) 
 ```
 
-### データベースとモデルを紐づける（マッピング）
+## データベースとモデルを紐づける（マッピング）
 - このクラスをインスタンス化してデータの保存、取得、削除を行う
 - 例
 ```
@@ -96,7 +49,7 @@ class Trip(db.Model):
     )
 ```
 
-### データベースの初期化
+## データベースの初期化
 - VSCodeのターミナルから実行する
 - 作業ディレクトリ内で、flask initialize_DB　のコマンドを実行する
 - パスが通ってない場合は、python -m flask initialize_DB　のコマンドを実行する
@@ -108,10 +61,9 @@ def initialize_DB():              # initialize_DB()は、initialize_DBという�
     print('データベースの初期化が完了しました。')
 ```
 
-### redirect()
+## redirect()
 - 引数に指定したページにリダイレクトさせる
 
-### url_for()
+## url_for()
 - 特定の関数へのURLを作成
 
-## create_map.py
