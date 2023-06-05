@@ -3,16 +3,16 @@
 - messages フラッシュメッセージのリストを格納
 - get_flashed_messages() 複数のフラッシュメッセージをリストとして返す
 - 例
-```
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <p style="background-color: lightblue;">
-                <b>{{ message }}</b></p>
-            {% endfor %}
-        {% endif %}          
-    {% endwith %}
-```
+    ```
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="background-color: lightblue;">
+                    <b>{{ message }}</b></p>
+                {% endfor %}
+            {% endif %}          
+        {% endwith %}
+    ```
 
 ## 表について
 - table              表全体

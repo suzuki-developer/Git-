@@ -31,20 +31,21 @@ app.secret_key = key
 # ================
 # データベース関係
 # ================
-URI = 'sqlite:///trip.db'                             # アプリで使用するDBのURIを定義（DBの作成） 
-app.config['SQLALCHEMY_DATABASE_URI'] = URI           # アプリがデータベースに接続する際に使用するURIを設定
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # 自動的な更新処理も行わないように設定
+# DBの作成、設定
+URI = 'sqlite:///trip.db'                             
+app.config['SQLALCHEMY_DATABASE_URI'] = URI           
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
 print('------辞書の中身を出力------')
 print(app.config)
 
-# FlaskのインスタンスをセットしてDB変数に格納（Flaskアプリへの関連付けを行う）
+# Flaskアプリへの関連付け
 db = SQLAlchemy(app)                                  
 
 # -----------------------------
 # db.Modelを継承したクラスを作成
 # -----------------------------
 class Trip(db.Model):
-    __tablename__ = 'trip_table'                   # テーブルの作成
+    __tablename__ = 'trip_table'                   
     id = db.Column(db.Integer, primary_key=True)   
     title = db.Column(db.String(30), unique=True)  
     content = db.Column(db.String(300))            
@@ -76,7 +77,8 @@ def initialize_DB():
 @app.route('/')
 def index():
     title = 'Trip Log : 一覧画面'
-    all_data = Trip.query.all() # データベースから保存されているデータを取得
+    # DBからデータを全て取得
+    all_data = Trip.query.all() 
     print('-------DBから取得したデータ-------')
     print(all_data)
     return render_template('index.html', title=title, all_data=all_data) 
@@ -95,7 +97,8 @@ def new():
 # -----------------------
 @app.route('/create', methods=['POST'])
 def create():
-    title = request.form['title']             # フォームに入力されたname属性を取得して変数に格納
+    # フォームに入力されたname属性を取得して変数に格納
+    title = request.form['title']             
     
     # titleに値が入力されているか判定
     if title:                                 
@@ -127,12 +130,12 @@ def create():
 # --------
 # 詳細画面
 # --------
-@app.route('/detail')                               # GETメソッドを使う場合は、引数に['GET']を省略して良い
+@app.route('/detail') 
 def detail():
     title = 'Trip Log : 詳細画面'
-    id = request.args.get('id')                     # 送られてきたidを取得
-    data = Trip.query.get(id)                       # idを引数にして該当するデータをDBから取得（個別に取得する場合はquery.get()を使用）
-    map = create_map(data.latitude, data.longitude) # create_map関数に緯度経度を渡して地図を作成
+    id = request.args.get('id') 
+    data = Trip.query.get(id)                    
+    map = create_map(data.latitude, data.longitude) 
     return render_template('detail.html', title=title, data=data, map=map)
 
 
