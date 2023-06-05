@@ -12,10 +12,7 @@
     <p>{{ data.content }}</p>
 
     <div class="map">
-        <!-- 
-            map変数をこのまま埋め込むと文字列として表示されてしまう為
-            | safe フィルタを使ってHTMLとして表示
-         -->
+        <!-- | safe フィルタを使ってHTMLとして表示 -->
         <p>{{ map | safe }}</p>
     </div>
 
