@@ -14,9 +14,22 @@ import folium # APIを使用せずに地図を使用できる
 # 地図を表示するための関数を作成
 # =============================
 def create_map(latitude, longitude):
-    ido_keido = []              # foliumには[緯度、経度]のリストで渡す必要がある
-    ido_keido.append(latitude)  # 緯度をリストに追加
-    ido_keido.append(longitude) # 経度をリストに追加
+    """
+    Summary line:
+        緯度と経度から、地図オブジェクトを作成する
+
+    args:
+        param1 (int): 緯度
+        param2 (int): 経度
+
+    Returns:
+        HTML形式の地図オブジェクト
+
+    """
+    # foliumには[緯度、経度]のリストで渡す必要がある
+    ido_keido = []              
+    ido_keido.append(latitude)  
+    ido_keido.append(longitude) 
 
     # 地図オブジェクトの作成
     # location 緯度経度をリストで渡す
