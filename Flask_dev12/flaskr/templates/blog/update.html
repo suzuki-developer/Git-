@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Edit（記事編集画面）"{{ post['title'] }}"{% endblock %}</h1> <!-- ToDo post → userArticle -->
+{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        <label for="title">Title（タイトル）</label>
+        <input name="title" id="title" value="{{ request.form['title'] or post['title'] }}" required> <!-- ToDo post → userArticle -->
+        <label for="body">Body（本文）</label>
+        <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea> <!-- ToDo post → userArticle -->
+        <input type="submit" value="Save（保存）">
+    </form>
+    <hr>
+    <form action="{{ url_for('blog.delete', id=post['id']) }}" method="POST"> <!-- ToDo post → userArticle -->
+        <input class="danger" type="submit" value="Delete（削除）" onclick="return confirm('Are you sure?（削除してもよろしいか？）');">
+    </form>  
+{% endblock %}

@@ -1,0 +1,89 @@
+<mxfile host="65bd71144e">
+    <diagram id="KbKujRR1OgIPhaz0einG" name="ページ1">
+        <mxGraphModel dx="845" dy="916" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1000" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="28" value="" style="whiteSpace=wrap;html=1;labelBackgroundColor=default;fillColor=default;labelBorderColor=none;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="376" y="362" width="470" height="255" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="run.py" style="whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="120" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.333;entryY=0.947;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="3" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="articles.py" style="whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="391" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="4" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="server.py" style="whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="120" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.51;entryY=1.116;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5" target="20" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="482" y="638" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="articles.py" style="whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="422" y="666" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="6" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="hello.py" style="whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="653" y="391" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;shape=flexArrow;" parent="1" source="7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="200" y="243.19998168945312" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="request.py" style="whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="580" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="起動ファイル" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="200" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="FLASKアプリを定義" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="200" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="・hello.pyで定義したBlueprintの読み込み" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="220" width="240" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="・articles.pyで定義したBlueprintの読み込み" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="250" width="240" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="HTTPリクエストを投げつける" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="118" y="660" width="181" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="&lt;div style=&quot;color: rgb(204, 204, 204); background-color: rgb(31, 31, 31); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;GET /api/hello&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="658" y="512" width="126" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;div style=&quot;color: rgb(204, 204, 204); background-color: rgb(31, 31, 31); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;GET /api/articles&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="512" width="149" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="&lt;div style=&quot;color: rgb(204, 204, 204); background-color: rgb(31, 31, 31); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;GET /api/articles/&lt;span style=&quot;color: #808080;&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #569cd6;&quot;&gt;id&lt;/span&gt;&lt;span style=&quot;color: #808080;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="541" width="187" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="下記のエンドポイントへの&lt;br&gt;アクセスがあった場合の処理" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="415" y="471" width="174" height="41" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;div style=&quot;color: rgb(204, 204, 204); background-color: rgb(31, 31, 31); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;POST /api/articles&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="567" width="157" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="下記のエンドポイントへの&lt;br&gt;アクセスがあった場合の処理" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="646" y="471" width="174" height="41" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="get()関数を定義" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="422" y="748" width="103" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="post関数を定義" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="428" y="774" width="101" height="26" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,8 @@
+import logging
+import os
+
+logging.basicConfig(level=logging.DEBUG)
+
+from app import server
+if __name__ == '__main__':
+    server.app.run(debug=True)
