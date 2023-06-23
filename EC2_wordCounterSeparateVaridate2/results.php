@@ -31,7 +31,11 @@
                 echo "<h2>あなたが入力した単語2: $getWord2</h2>";
                 echo "<p>あなたが入力した単語2は「 $count2 」回使われています</p>";
 
-                $stmt3 = $pdo->prepare("SELECT word, COUNT(*) AS count FROM usersWord GROUP BY word ORDER BY word");
+                // // 名前の順
+                // $stmt3 = $pdo->prepare("SELECT word, COUNT(*) AS count FROM usersWord GROUP BY word ORDER BY word");
+                // 使用回数順
+                $stmt3 = $pdo->prepare("SELECT word, COUNT(*) AS count FROM usersWord GROUP BY word ORDER BY count DESC");
+
                 $stmt3->execute();
                 $wordCountList = $stmt3->fetchAll(PDO::FETCH_ASSOC);
                 // var_dump($wordCountList);
